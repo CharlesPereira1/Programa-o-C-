@@ -1,0 +1,27 @@
+//CLASSE
+public string Nome {
+            get { return _nome; }
+            set {
+                if (value != null && value.Length > 1) {
+                    _nome = value;
+                }
+            }
+        }
+		
+//PROGRAMA
+using System;
+using System.Globalization;
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+            Produto p = new Produto("TV", 450.00, 10);
+
+            p.Nome = "T";
+            Console.WriteLine(p.Nome);
+
+        }
+    }
+}
+
+		

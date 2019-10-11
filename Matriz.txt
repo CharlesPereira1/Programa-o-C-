@@ -1,0 +1,61 @@
+using System;
+using System.Globalization;
+using System.Collections.Generic; //OBRIGATORIO PARA TRABALHAR COM LISTA
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+
+            double[,] mat = new double[2, 3];
+
+            Console.WriteLine(mat.Length);
+            Console.WriteLine(mat.Rank);
+
+            Console.WriteLine(mat.GetLength(0));
+
+            Console.WriteLine(mat.GetLength(1));
+
+        }
+    }
+}
+
+///////////////////////////////////////////
+//programa de matriz 3
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] mat = new int[n, n]; //informa matriz com virgula dentro do cochetes para o sistema saber que é matriz com linhas e colunas
+
+            for (int i = 0; i < n; i++) { //for para contar linhas
+                string[] values = Console.ReadLine().Split(' '); //split para informar dados em linha com espaço
+
+                for (int j = 0; j < n; j++) { //for de colunas dentro do for de linhas, este informa colunas
+                    mat[i, j] = int.Parse(values[j]); //adicinar valores de acordo com o campo ex.: 0,1 linha 0, coluna 1
+                }
+            }
+
+            Console.WriteLine("Diagonal Principal: ");
+            for (int i = 0; i < n; i++) { //informar numeros na diagonal da matriz
+                Console.Write(mat[i,i] + " "); // i = i, ou seja, 0,0 - 1,1 - 2,2
+            }
+            Console.WriteLine();
+
+            int count = 0; //declaraçao de variavel 0 para fazer conta
+            for(int i = 0; i < n; i++) { //contagem de numeros negativos dentro da matriz i e j
+                for (int j = 0; j < n; j++) {
+                    if (mat[i,j] < 0) { //if para numeros menores que 0
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine("Numeros Negativos: " + count);
+
+
+        }
+    }
+}
+

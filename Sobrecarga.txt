@@ -1,0 +1,10 @@
+//CLASSE
+public Produto(string nome, double preco) {
+            Nome = nome;
+            Preco = preco;
+            Quantidade = 5; //POSSIBILITA INICIAR COM QTD EXPECIFICAS NA CLASSE
+			
+        } 
+		
+//PROGRAMA
+Produto p = new Produto(nome, preco);		

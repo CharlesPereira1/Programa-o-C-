@@ -1,0 +1,84 @@
+//CLASSE
+
+namespace Heranca.Entidades
+{
+    class Conta
+    {
+        public int Numero { get; private set; }
+        public string Titular { get; private set; }
+        public double Balanco { get; protected set; } //proteted só pode ser alterado dentro da classe ou alguma subclasse
+
+        public Conta()
+        {
+
+        }
+
+        public Conta(int numero, string titular, double balanco)
+        {
+            Numero = numero;
+            Titular = titular;
+            Balanco = balanco;
+        }
+
+        public void Saque(double quantia)
+        {
+            Balanco -= quantia;
+        }
+        public void Deposito(double quantia)
+        {
+            Balanco += quantia;
+        }
+    }
+}
+
+//SUBCLASSE
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Heranca.Entidades
+{
+    class ContaEmpresa : Conta //Herdou tudo que a classe conta tem
+    {
+        public double LimiteDeEmprestismo { get; set; }
+        public ContaEmpresa()
+        {
+            
+        }
+
+        public ContaEmpresa(int numero, string titular, double balanco, double limiteDeEmprestimo) 
+            : base(numero,  titular, balanco) //comando : base chama o construtor da classe Conta
+        {
+            LimiteDeEmprestismo = limiteDeEmprestimo;
+        }
+
+        public void Titular(double quantia)
+        {
+            if(quantia <= LimiteDeEmprestismo)
+            {
+                Balanco += quantia;
+            }
+        }
+    }
+}
+
+//PROGRAMA
+
+using System;
+using Heranca.Entidades;
+
+namespace Heranca
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ContaEmpresa conta = new ContaEmpresa(8010, "Charles Pereira", 17800.58, 500.00);
+            Console.WriteLine(conta.Balanco);
+
+            //conta.Balanco = 18220; // nao pode alterar no programa por conta da proteçao
+
+        }
+    }
+}
+

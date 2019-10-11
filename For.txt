@@ -1,0 +1,20 @@
+using System;
+using System.Globalization;
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+
+            Console.Write("Quantos números inteiros você vai digitar?");
+            int N = int.Parse(Console.ReadLine());
+
+            int soma = 0;
+            for (int i = 1; i <= N; i++) {
+                Console.Write("Valor #{0}: ", i); //PLACE HOLDER 0 recebe i
+                int valor = int.Parse(Console.ReadLine());
+                soma += valor;
+            }
+            Console.Write("Soma = " + soma);
+        }
+    }
+}

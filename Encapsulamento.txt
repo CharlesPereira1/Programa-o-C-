@@ -1,0 +1,48 @@
+//CLASSE
+class Produto {
+        private string _nome;
+        private double _preco;
+        private int _quantidade;
+		
+		 //CONSTRUTOR
+        public Produto(string nome, double preco, int quantidade) {
+            _nome = nome;
+            _preco = preco;
+            _quantidade = quantidade;
+
+        }
+
+        public string GetNome() {
+            return _nome;
+        }
+
+        public void SetNome(string nome) {
+            if (nome != null && nome.Length > 1) {
+                _nome = nome;
+            }
+        }
+
+        public double GetPreco() {
+            return _preco;
+        }
+
+        public int Getquantidade() {
+            return _quantidade;
+        }
+		
+//PROGRAMA
+	using System;
+	using System.Globalization;
+
+	namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+            Produto p = new Produto("TV", 450.00, 10);
+
+            p.SetNome("T");
+            Console.WriteLine(p.GetNome());
+            Console.WriteLine(p.GetPreco());
+
+        }
+    }
+}

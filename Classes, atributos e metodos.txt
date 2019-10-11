@@ -1,0 +1,130 @@
+CLASSE -> tipo estruturado que pode conter (membros):
+	* Atributos (dados / campos)
+	* Métodos (funçoes / operaçoes)
+		Funçoes dentro da classe
+			public - prefixo indica que o atributo ou método pode ser usado em outros arquivos
+			
+		Metodo é obrigatório abre e fecha parenteses
+		
+	-> A classe também pode prover muitos outros recursos, tais como:
+		* Construtores
+		* Sobrecarga
+		* Encapsulamento
+		* Herança
+		* Polimorfismo
+EXEMPLO
+	* Entidade: Produto, Cliente, Triangulo;
+	* Serviços: ProdutoService, ClienteService, EmailService, StorageService
+	* Controladores: ProdutoController, ClienteController
+	* Utilitários: Calculadora, Compactador
+	* Outros (views, repositórios, gerenciadores, etc)
+	
+
+//RESOLVENDO PROBLEMA SEM ORIENTAÇAO A OBJETOS
+using System;
+using System.Globalization;
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+
+            double xA, xB, xC, yA, yB, yC;
+
+            Console.WriteLine("Entre com as medidas do Triangulo X: ");
+            xA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            xB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            xC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Entre com as medidas do Triangulo Y: ");
+            yA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            yB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            yC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double p = (xA + xB + xC) / 2.0;
+            double areaX = Math.Sqrt(p * (p - xA) * (p - xB) * (p - xC));
+
+            p = (yA + yB + yC) / 2;
+            double areaY = Math.Sqrt(p * (p - yA) * (p - yB) * (p - yC));
+
+            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
+
+            if (areaX > areaY) {
+                Console.WriteLine("Maior Área: X");
+            } else {
+                Console.WriteLine("Maior Área: Y");
+            }
+
+
+        }
+    }
+}
+
+
+//RESOLVENDO COM CLASSE ATRIBUIDA
+
+using System;
+
+namespace Course1 {
+    //CLASSE
+    class Triangulo {
+
+        //ATRIBUTOS
+        public double A;
+        public double B;
+        public double C;
+
+        //METODO
+        public double Area() { 
+            double p = (A + B + C) / 2.0;
+            return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+            
+
+        }
+    }
+}
+
+
+==============================================================================
+
+//USANDO OO - CLASSE.
+
+using System;
+using System.Globalization;
+
+namespace Course1 {
+    class Program {
+        static void Main(string[] args) { //funçao entrypoint - ponto de entrada
+
+            Triangulo x, y;
+
+            x = new Triangulo();
+            y = new Triangulo();
+
+            Console.WriteLine("Entre com as medidas do Triangulo X: ");
+            x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Entre com as medidas do Triangulo Y: ");
+            y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double areaX = x.Area();
+
+            double areaY = y.Area();
+
+            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
+
+            if (areaX > areaY) {
+                Console.WriteLine("Maior Área: X");
+            } else {
+                Console.WriteLine("Maior Área: Y");
+            }
+
+
+        }
+    }
+}
